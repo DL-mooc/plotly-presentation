@@ -1,0 +1,35 @@
+---
+title: "Week 3 Assignment"
+author: "Daria Lidina"
+date: "October 16, 2016"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(plotly)
+```
+
+## R Markdown
+
+This is a very basic R Markdown presentation for Coursera's assignment.
+
+Next you'll see an example of using plotly to add an interactive data visualization.
+
+## Plotly
+The left subplot uses default colors, the right - customized.
+
+```{r echo = FALSE,warning=FALSE}
+data("iris")
+
+p1 <- plot_ly(data = iris, x = ~Sepal.Length, y = ~Petal.Length) %>% add_markers(color = ~Species)
+
+pal <- c("red", "blue", "green")
+pal <- setNames(pal, c("virginica", "setosa", "versicolor"))
+
+p2 <- plot_ly(data = iris, x = ~Sepal.Length, y = ~Petal.Length) %>% add_markers(color = ~Species, colors = pal)
+
+subplot(p1, p2)
+```
+
+## Thank you!
